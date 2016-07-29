@@ -1,8 +1,11 @@
 import React from 'react';
+import AddressForm from './AddressForm/AddressForm';
 
 function Index() {
     return (
-        <div>Hello World</div>
+        <div className="container">
+            <AddressForm />
+        </div>
     );
 }
 

@@ -1,4 +1,4 @@
-import 'css-reset';
+// import 'css-reset';
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
@@ -10,6 +10,8 @@ import configureStore from './store/configureStore';
 
 const store = configureStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
+
+window.STORE = store;
 
 render(
     <AppContainer>

@@ -8,7 +8,7 @@ const middleware = [
 ];
 
 if (process.env.BROWSER && process.env.CLIENT_ENV !== 'production') {
-    middleware.push(createLogger());
+    // middleware.push(createLogger());
 }
 
 export default function configureStore(initialState) {
@@ -17,8 +17,8 @@ export default function configureStore(initialState) {
         initialState,
         compose(
             applyMiddleware(...middleware),
-            process.env.BROWSER && window.devToolsExtension
-                ? window.devToolsExtension() : f => f
+            // process.env.BROWSER && window.devToolsExtension
+            //     ? window.devToolsExtension() : f => f
         )
     );
 
