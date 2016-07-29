@@ -1,6 +1,6 @@
 {
-  "name": "react-boilerplate",
-  "version": "1.0.0",
+  "name": "redux-form-v5-vs-redux-form-v6",
+  "version": "A performance comparison of redux-form v5 vs v6",
   "description": "",
   "main": "index.js",
   "scripts": {
