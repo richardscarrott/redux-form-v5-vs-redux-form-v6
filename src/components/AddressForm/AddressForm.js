@@ -88,6 +88,11 @@ function validateAddress(address) {
 // I wonder if there'd be anything wrong with running the value through a validate
 // function during render of an individual input, i.e. `validateAddress1Title`.
 // Or pass `reduxForm` an object of validators, e.g. { address1: { title: () => {}, ... } }
+
+// NOTE: Validation doesn't currently work in v6 as if a field has no value it simply
+// doesn't exist on the form `state` which unfortuantely this 'dynamic' validation
+// currently relies on...this means v6 has an unfair advantage but results seem
+// to suggest it still can't be as well tuned as v5.
 function validate(state) {
     // console.time('validate')
     // for (let i = 0; i < 100000000; i++) {}
