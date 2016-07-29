@@ -1,0 +1,10 @@
+{
+    "extends": "./node_modules/60frames-coding-standards/.eslintrc-node",
+    "env": {
+    	"es6": true
+    },
+    "rules": {
+        "valid-jsdoc": 0,
+        "no-process-env": 0
+    }
+}
