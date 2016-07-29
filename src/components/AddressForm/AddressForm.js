@@ -1,28 +1,28 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import memoize from 'memoizejs';
 import AddressFieldset from './AddressFieldset/AddressFieldset';
 
-const ADDRESS_COUNT = 60;
+const ADDRESS_COUNT = 40;
 
-function getFields() {
-    const fields = [];
-    for (let i = 1; i <= ADDRESS_COUNT; i++) {
-        fields.push(
-            `address${i}.title`,
-            `address${i}.firstName`,
-            `address${i}.lastName`,
-            `address${i}.line1`,
-            `address${i}.line2`,
-            `address${i}.line3`,
-            `address${i}.city`,
-            `address${i}.state`,
-            `address${i}.postcode`,
-            `address${i}.country`
-        );
-    }
-    return fields;
-}
+// function getFields() {
+//     const fields = [];
+//     for (let i = 1; i <= ADDRESS_COUNT; i++) {
+//         fields.push(
+//             `address${i}.title`,
+//             `address${i}.firstName`,
+//             `address${i}.lastName`,
+//             `address${i}.line1`,
+//             `address${i}.line2`,
+//             `address${i}.line3`,
+//             `address${i}.city`,
+//             `address${i}.state`,
+//             `address${i}.postcode`,
+//             `address${i}.country`
+//         );
+//     }
+//     return fields;
+// }
 
 class AddressForm extends Component {
 
@@ -31,20 +31,13 @@ class AddressForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillUpdate() {
-        // console.time('form-update');
-    }
-
-    componentDidUpdate() {
-        // console.timeEnd('form-update');
-    }
-
     handleSubmit(state) {
         console.log(state)
     }
 
     render() {
         const { handleSubmit } = this.props;
+        // console.log('FORM RENDER')
         return (
             <form onSubmit={handleSubmit(this.handleSubmit)}>
                 <div className="row">
@@ -58,15 +51,16 @@ class AddressForm extends Component {
     }
 
     renderAddressFieldsets() {
-        const { fields } = this.props;
-        return Object.keys(fields)
-            .map(address => {
-                return (
-                    <div className="col-xs-6 col-md-4">
-                        <AddressFieldset legend={address} key={address} {...fields[address]} />
-                    </div>
-                );
-            });
+        const fieldsets = [];
+        for (let i = 1; i <= ADDRESS_COUNT; i++) {
+            const name = `address${i}`;
+            fieldsets.push(
+                <div className="col-xs-6 col-md-4">
+                    <AddressFieldset name={name} legend={name} key={name} />
+                </div>
+            );
+        }
+        return fieldsets;
     }
 
 }
@@ -111,6 +105,6 @@ function validate(state) {
 
 export default reduxForm({
     form: 'addressForm',
-    fields: getFields(),
+    // fields: getFields(),
     validate
 })(AddressForm);

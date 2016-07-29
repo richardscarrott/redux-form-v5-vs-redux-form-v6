@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
+import { Field } from 'redux-form';
 import Input from '../Input/Input';
 
 const styles = {
@@ -19,22 +20,21 @@ class AddressFieldset extends Component {
     }
 
     render() {
-        const { legend, title, firstName, lastName, line1, line2, line3, city, state,
-            postcode, country } = this.props;
+        const { name, legend } = this.props;
         // for (let i = 0; i < 100000000; i++) {}
         return (
             <fieldset style={styles.root}>
                 <legend>{legend}</legend>
-                <Input field={title} />
-                <Input field={firstName} />
-                <Input field={lastName} />
-                <Input field={line1} />
-                <Input field={line2} />
-                <Input field={line3} />
-                <Input field={city} />
-                <Input field={state} />
-                <Input field={postcode} />
-                <Input field={country} />
+                <Field name={`${name}.title`} component={Input} />
+                <Field name={`${name}.firstName`} component={Input} />
+                <Field name={`${name}.lastName`} component={Input} />
+                <Field name={`${name}.line1`} component={Input} />
+                <Field name={`${name}.line2`} component={Input} />
+                <Field name={`${name}.line3`} component={Input} />
+                <Field name={`${name}.city`} component={Input} />
+                <Field name={`${name}.state`} component={Input} />
+                <Field name={`${name}.postcode`} component={Input} />
+                <Field name={`${name}.country`} component={Input} />
             </fieldset>
         );
     }
