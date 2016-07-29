@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 import memoize from 'memoizejs';
 import AddressFieldset from './AddressFieldset/AddressFieldset';
 
-const ADDRESS_COUNT = 60;
+const ADDRESS_COUNT = 40;
 
 function getFields() {
     const fields = [];
@@ -59,14 +59,15 @@ class AddressForm extends Component {
 
     renderAddressFieldsets() {
         const { fields } = this.props;
-        return Object.keys(fields)
-            .map(address => {
-                return (
-                    <div className="col-xs-6 col-md-4">
-                        <AddressFieldset legend={address} key={address} {...fields[address]} />
-                    </div>
-                );
-            });
+        const fieldsets = [];
+        for (let field in fields) {
+            fieldsets.push(
+                <div className="col-xs-6 col-md-4">
+                    <AddressFieldset legend={field} key={field} {...fields[field]} />
+                </div>
+            );
+        }
+        return fieldsets;
     }
 
 }
